@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.training.repository.ArticleMapper">
+    <select id="selectAllArticles" resultType="Article">
+        SELECT a.*
+        FROM article a
+    </select>
+    <select id="selectArticle" parameterType="Long" resultType="Article">
+        SELECT a.*
+        FROM article a
+        WHERE a.id = #{id}
+    </select>
+    <select id="findOne" parameterType="Long" resultType="Article">
+        SELECT a.*
+        FROM article a
+        WHERE a.id = #{id}
+    </select>
+<!-- parameterType에서 입력값이 없는 파라미터는 int가 기본이다.   -->
+    <insert id="insertOneArticle" parameterType="Article" useGeneratedKeys="true" >
+        INSERT INTO article (title, content) VALUES (#{title}, #{content})
+    </insert>
+
+    <update id="updateOneArticle" parameterType="com.example.training.model.dto.ModifyArticleRequest" useGeneratedKeys="true">
+        UPDATE article
+        SET title = #{title}, content = #{content}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteOneArticle" parameterType="Long">
+        DELETE FROM article
+        WHERE id = #{id}
+    </delete>
+
+    <resultMap id="articleResultMap" type="Article">
+        <result property="createdAt" column="created_at"/>
+        <result property="updatedAt" column="updated_at"/>
+    </resultMap>
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <typeAliases>
+        <typeAlias alias="Article" type="com.example.training.model.Article"/>
+        <typeAlias alias="Comment" type="com.example.training.model.Comment"/>
+        <typeAlias alias="AddComment" type="com.example.training.model.dto.AddCommentRequest"/>
+        <typeAlias alias="CommentResponse" type="com.example.training.model.dto.CommentResponse"/>
+        <package name="com.example.training.model" />
+    </typeAliases>
+
+    <typeHandlers>
+        <typeHandler handler="org.apache.ibatis.type.LocalDateTimeTypeHandler" />
+        <typeHandler handler="org.apache.ibatis.type.LocalDateTypeHandler" />
+    </typeHandlers>
+
+</configuration>
